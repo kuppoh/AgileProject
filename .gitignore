@@ -1,3 +1,4 @@
+.gitignore
 .env
 config/ca-certificate.crt
 package.json
