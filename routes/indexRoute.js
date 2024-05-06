@@ -7,7 +7,7 @@ const { promiseUserPool } = require("../config/database");
 // Route to render the index page
 router.get("/", (req, res) => {
     //res.send("Hello World!");
-  res.render("login");
+  res.render("login", { name: "Guest" });
 });
 
 // Route to render the dashboard page for authenticated users
@@ -23,7 +23,8 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
           user: req.user,
           sessionStore: req.sessionStore,
           role: role,
-          body: ""
+          body: "",
+          userName: req.user.name
         });
       } else {
         // Handle the case where no results are returned

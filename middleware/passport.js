@@ -8,8 +8,7 @@ const localLogin = new LocalStrategy(
       passwordField: "password"
     },
     (email, password, done) => {
-      // Correct asynchronous handling
-      userController.getUserByEmailIdAndPassword(email, password)
+      userController.getUserByEmailIdAndPassword(email, password) // Function to get user by email and password
         .then(user => {
           if (user) {
             return done(null, user);  // User found and authenticated

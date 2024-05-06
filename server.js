@@ -30,16 +30,6 @@ app.use(
     })
 );
 
-const isLoggedIn = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
-
-// Parse incoming request bodies with urlencoded payloads
-app.use(express.urlencoded({ extended: false }));
-
 // Use EJS layouts for rendering views
 app.use(ejsLayouts);
 
