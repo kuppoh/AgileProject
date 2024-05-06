@@ -16,15 +16,16 @@ let authController = {
   }),
 
   registerSubmit: async (req, res) => {
+    const database = await promiseUserPool.query('SELECT * FROM users');
     try {
       const newUser = {
-        id: database.length + 1,
+        id: database[0].length + 1,
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        role: "regular",
-        reminders: [],
+        role: "user"
       };
+      console.log("Registering new user: ", newUser);
       await promiseUserPool.query('INSERT INTO users SET ?', newUser);
       res.redirect("/login");
     } catch (error) {
